@@ -1,0 +1,369 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  text-decoration: none;
+  outline: none;
+  transition: all 0.3s;
+}
+body {
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+}
+section {
+  min-height: 100vh;
+  padding: 1.8rem 18%;
+}
+
+section:nth-child(odd) {
+  background-color: #f1af09;
+}
+section:nth-child(even) {
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+}
+.heading {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0px 0px 5px white;
+}
+html::-webkit-scrollbar {
+  width: 0.6rem;
+}
+html::-webkit-scrollbar-track {
+  background: #202020;
+}
+html::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: #c79d33;
+}
+html::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+  background: #f1af09;
+}
+
+/*======================== Navbar start =========================*/
+nav {
+  background-color: #202020;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  padding: 10px 0;
+  box-shadow: 0px 0px 15px rgb(16, 16, 16), 0px 0px 15px rgb(16, 16, 16);
+  position: fixed;
+  z-index: 100;
+}
+a.logo {
+  display: flex;
+  text-decoration: none;
+  margin-top: 5px;
+}
+nav .logo img {
+  border-radius: 50%;
+}
+nav .logo h4 {
+  color: white;
+  padding-left: 10px;
+  line-height: 41px;
+  text-shadow: 0px 0px 5px white;
+}
+nav .logo h4:hover {
+  color: #f1af09;
+  text-shadow: 0px 0px 35px #f1af09;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  width: 25%;
+  justify-content: space-between;
+  line-height: 50px;
+}
+nav ul li a {
+  text-decoration: none;
+  color: aliceblue;
+  transition: 0.2s;
+  text-shadow: 0px 0px 5px white;
+}
+nav ul li a.active,
+nav ul li a:hover {
+  color: #f1af09;
+  border-bottom: 0.2rem solid #f1af09;
+  padding: 0.5rem 0;
+  text-shadow: 0px 0px 35px #f1af09;
+}
+.menu-toggle {
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+.menu-toggle input {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background-color: white;
+  border-radius: 1px;
+  transition: 0.5s;
+}
+
+/* Hamburger Menu Animation */
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+.menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+.menu-toggle input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* Media Queries */
+@media screen and (max-width: 968px) {
+  nav {
+    bottom: 0;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  }
+  ul li {
+    width: 50%;
+    text-align: center;
+  }
+  nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 30vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #202020;
+    z-index: -999;
+    transform: translateY(30%);
+    opacity: 0;
+    transition: transform 0.2s linear, opacity 0.3s linear;
+    border-radius: 20px;
+  }
+  .menu-toggle {
+    display: flex;
+    margin-top: 15px;
+  }
+  nav ul.slide {
+    transform: translateY(-90%);
+    opacity: 1;
+  }
+}
+/*======================== Navbar end =========================*/
+
+/*======================== Project start =========================*/
+section.project {
+  padding: 4.8rem 13% 2rem 13%;
+}
+
+.project .box-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin: 2rem;
+}
+.project .box-container .box {
+  flex: 1 1 17rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 17rem;
+  box-shadow: 0px 0px 15px rgb(16, 16, 16), 0px 0px 15px rgb(16, 16, 16);
+}
+.project .box-container .box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.project .box-container .box .content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 82%;
+  left: 0;
+  background: rgba(32, 32, 32, 0.9);
+  display: flex;
+  flex-direction: column;
+}
+.project .box-container .box .content .tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  padding-left: 1rem;
+  background: #2b2b2b;
+}
+.project .box-container .box .content .tag h3 {
+  color: white;
+  font-size: 1.2rem;
+  text-shadow: 0px 0px 3px white;
+}
+.project .box-container .box:hover .content {
+  top: 15%;
+}
+.project .desc {
+  margin: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.project .desc p {
+  text-transform: none;
+  color: white;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  text-shadow: 0px 0px 3px white;
+}
+.project .desc .btns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0 1rem;
+}
+.project .desc .btns .btn.view:hover i {
+  transform: translateX(-5px);
+}
+.project .desc .btns .btn.code:hover i {
+  transform: translateX(5px);
+}
+.project .desc .btns .btn {
+  line-height: 0;
+  display: inline;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background: rgb(16, 16, 16);
+  text-shadow: 0px 0px 5px white;
+  box-shadow: 0px 0px 5px black;
+}
+.project .desc .btns .btn:hover {
+  box-shadow: 0px 0px 10px #f1af09, 0px 0px 15px #f1af09 inset;
+  transform: scale(1.1);
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+}
+.project div.back {
+  display: flex;
+  justify-content: center;
+}
+.project div.back .btn {
+  padding: 15px;
+  background-color: #202020;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  border-color: #202020;
+  color: white;
+  box-shadow: 0px 0px 10px #202020, 0px 0px 15px #202020 inset;
+  text-shadow: 0px 0px 3px white;
+}
+.project div.back .btn:hover {
+  transform: scale(1.1);
+  background-color: white;
+  border: 3px solid transparent;
+  color: #202020;
+  box-shadow: 0px 0px 10px white, 0px 0px 15px white inset;
+  text-shadow: 0px 0px 3px #2b2b2b;
+}
+.project div.back .btn:hover i {
+  transform: translateX(-5px);
+}
+
+.project div.back .btn i {
+  margin-right: 5px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 568px) {
+  section.project {
+    padding: 1.8rem 2% 6rem 2%;
+  }
+  .project .box-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .project .desc .btns .btn {
+    padding: 1rem 1rem;
+  }
+}
+/*======================== Project end =========================*/
+
+/*======================== Scroll Top start =========================*/
+#scroll-top {
+  position: fixed;
+  top: -140%;
+  right: 3rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  background: rgb(16, 16, 16);
+  color: #f1af09;
+  border-radius: 10px;
+  transition: 1s linear;
+  z-index: 1;
+  box-shadow: 0px 0px 10px black;
+  text-shadow: 0px 0px 10px #f1af09;
+}
+#scroll-top.active {
+  top: calc(100% - 7rem);
+}
+
+/* Media Queries */
+@media (max-width: 568px) {
+  #scroll-top {
+    top: 140%;
+  }
+}
+/*======================== Scroll Top end =========================*/
