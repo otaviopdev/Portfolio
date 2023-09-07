@@ -1,0 +1,545 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  transition: all 0.3s;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  overflow-x: hidden;
+}
+
+body.hidden {
+  overflow: hidden;
+}
+
+section {
+  padding: 1.8rem 18%;
+}
+
+section:nth-child(odd) {
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+}
+
+section:nth-child(even) {
+  background-color: #202020;
+}
+
+.heading {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0px 0px 3px white;
+}
+html::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+html::-webkit-scrollbar-track {
+  background: #282828;
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  border-radius: 5px;
+}
+
+/*======================== Navbar start =========================*/
+nav {
+  background-color: #282828;
+  display: flex;
+  width: 100%;
+  height: 80px;
+  justify-content: space-around;
+  padding: 15px 0;
+  box-shadow: 0px 0px 10px rgb(40, 40, 40), 0px 0px 10px rgb(40, 40, 40);
+  position: fixed;
+  z-index: 100;
+}
+
+nav a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border-bottom: 2px solid #f1af09;
+  border-radius: 15px;
+  transform: scale(0) translateY(50px);
+  opacity: 0;
+  transition: .5s;
+}
+
+nav a:hover span {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  width: 25%;
+  justify-content: space-between;
+  padding-top: 16.6px;
+}
+
+nav ul li a {
+  position: relative;
+  font-size: 1.0em;
+  text-decoration: none;
+  color: #cececc;
+  transition: 0.2s;
+  padding: 6px 20px;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  color: #f1af09;
+}
+
+ a.logo {
+  display: flex;
+  text-decoration: none;
+  margin-top: 4px; 
+}
+
+nav .logo img {
+  border-radius: 50%;
+}
+
+nav .logo img:hover {
+  box-shadow: 0px 1px 10px #f1af09;
+}
+
+nav .logo h4 {
+  color:  #cececc;
+  padding-left: 25px;
+  line-height: 41px;
+  padding-top: 1.5px;
+  font-size: 1.0em;
+}
+
+nav .logo h4:hover {
+  color: #f1af09;
+  transition: 0.2s;
+  transform: scale(1.1);
+} 
+
+.menu-toggle {
+  margin-top: 10px;
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.menu-toggle input {
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background-color: #f1af09;
+  border-radius: 1px;
+  transition: 0.5s;
+}
+
+/* hamburger Menu Animation */
+.menu-toggle span:nth-child(2) {
+  transform-origin: 0 0;
+}
+
+.menu-toggle span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+
+.menu-toggle input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.menu-toggle input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+
+.menu-toggle input:checked ~ span:nth-child(3) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* Media Queries */
+@media screen and (max-width: 870px) {
+  nav {
+    box-shadow: none;
+    background-color: rgba(40, 40, 40,0.8);
+  }
+
+  ul li {
+    width: 50%;
+    text-align: center;
+  }
+  
+  nav ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 30vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: rgba(40, 40, 40, 0.9);
+    z-index: -999;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.2s linear, opacity 0.3s linear;
+    font-size: 17px;
+    box-shadow: 0px 0px 10px #f1af09;
+    border-radius: 0px 0px 15px 15px;
+  }
+
+  .menu-toggle {
+    display: flex;
+    margin-top: 17px;
+  }
+
+  nav ul.slide {
+    transform: translateY(31.5%);
+    opacity: 1;
+  }
+}
+/*======================== Navbar end =========================*/
+
+/*======================== Project start =========================*/
+section.project {
+  padding: 7rem 13%;
+  min-height: 100vh;
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+}
+
+.project .heading span {
+  color: rgb(255, 230, 0);
+}
+
+.project .box-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem;
+}
+
+.project .box-container .box {
+  flex: 1 1 17rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 17rem;
+  box-shadow: 0px 0px 10px rgb(40, 40, 40), 0px 0px 10px rgb(40, 40, 40);
+}
+
+.project .box-container .box img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.project .box-container .box .content {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 82%;
+  left: 0;
+  background: rgba(40, 40, 40, 0.8);
+  display: flex;
+  flex-direction: column;
+}
+
+.project .box-container .box .content .tag {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  padding-left: 1rem;
+  background: #2b2b2b;
+}
+
+.project .box-container .box .content .tag h3 {
+  color: white;
+  font-size: 1.1rem;
+  text-shadow: 0px 0px 1px white;
+}
+
+.project .box-container .box:hover .content {
+  top: 15%;
+}
+
+.project .desc {
+  margin: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.project .desc p {
+  text-transform: none;
+  color:#cececc;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.project .desc .btns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 30px;
+  padding: 0 1rem;
+}
+
+.project .desc .btns .btn {
+  line-height: 0;
+  display: inline;
+  padding: 1rem 1.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  color: white;
+  background: #282828;
+  text-shadow: 0px 0px 1px white;
+  box-shadow: 0px 0px 5px #f1af09;
+}
+
+.project .desc .btns .btn.view:hover i {
+  transform: translateX(-5px);
+}
+
+.project .desc .btns .btn.code:hover i {
+  transform: translateX(5px);
+}
+
+.project .desc .btns .btn:hover {
+  box-shadow: 0px 0px 5px #f1af09, 0px 0px 5px #f1af09 inset;
+  transform: scale(1.1);
+  background: radial-gradient(
+      ellipse farthest-corner at right bottom,
+      #fedb37 0%,
+      #fdb931 8%,
+      #9f7928 30%,
+      #8a6e2f 40%,
+      transparent 80%
+    ),
+    radial-gradient(
+      ellipse farthest-corner at left top,
+      #ffffff 0%,
+      #ffffac 8%,
+      #d1b464 25%,
+      #5d4a1f 62.5%,
+      #5d4a1f 100%
+    );
+}
+
+.project div.btnBack {
+  display: flex;
+  justify-content: center;
+}
+
+.project div.btnBack .btn {
+  padding: 20px;
+  background-color: #282828;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0s;
+  box-shadow: 0px 0px 5px #f1af09;
+}
+
+.project div.btnBack .btn:hover {
+  background-color: white;
+  color: black;
+  box-shadow: 0px 0px  10px #282828;
+}
+
+.project div.btnBack .btn:hover i {
+  transform: translateX(-5px);
+}
+
+.project div.btnBack .btn i {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 968px) {
+  .project .viewall {
+    position: relative;
+    display: block;
+  }
+
+  .project .viewall h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 5rem;
+  }
+
+  section.project {
+    padding: 7rem 2%;
+  }
+
+  .project .box-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .project .desc .btns {
+    margin-top: 20px;
+  }
+
+  .project .desc .btns .btn {
+    padding: 1rem 1rem;
+  }
+
+  .project .viewall .btn.more {
+    position: absolute;
+    left: 0rem;
+    margin-left: 15%;
+    bottom: 1.5rem;
+  }
+
+  .project .viewall .btn.email {
+    position: absolute;
+    right: 0rem;
+    margin-right: 15%;
+    bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 568px) {
+  section.project {
+    padding: 7rem 2%;
+  }
+
+  .project .desc p {
+    font-size: 15.5px;
+  }
+
+  .project .box-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .project .desc .btns .btn {
+    padding: 1rem 1rem;
+  }
+
+  .project .viewall .btn.more {
+    position: absolute;
+    left: 0rem;
+    margin-left: 5%;
+    bottom: 1.5rem;
+  }
+
+  .project .viewall .btn.email {
+    position: absolute;
+    right: 0rem;
+    margin-right: 5%;
+    bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 402px) {
+  .project .box-container .box:hover .content {
+    top: 0%;
+  }  
+
+  .project .desc .btns {
+    padding: 0;
+  }
+}
+/*======================== Project end =========================*/
+
+/*======================== Scroll Top start =========================*/
+#scroll-top {
+  position: fixed;
+  top: -140%;
+  right: 3rem;
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  background: #282828;
+  color: #f1af09;
+  border-radius: 10px;
+  z-index: 1;
+  box-shadow: 0px 0px 5px #f1af09;
+}
+
+#scroll-top.active {
+  top: calc(102% - 7rem);
+}
+
+#scroll-top:hover {
+  box-shadow: 0px 0px 10px #f1af09;
+}
+
+/* Media Queries */
+@media (max-width: 568px) {
+  #scroll-top {
+    top: 140%;
+  }
+}
+/*======================== Scroll Top end =========================*/
